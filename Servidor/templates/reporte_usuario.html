@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilos.css')}}">
+    <title>El Almoadino</title>
+  </head>
+  <body>
+    <div class="formulario">
+      <h1>Operaciones con Articulos</h1>
+      <form action="{{url_for('reporte_usuario')}}" method="POST">
+        <div>
+          <label>Nombre: </label> <br/>
+          <input type="text" name="nombre" placeholder="Escriba el nombre aquí" >
+        </div>
+        <div>
+          <label>Primer Apellido: </label> <br/>
+          <input type="text" name="primer_apellido" placeholder="Escriba el primer apellido aquí" >
+        </div>
+        <div>
+          <label>Segundo Apellido: </label> <br/>
+          <input type="text" name="segundo_apellido" placeholder="Escriba el segundo apellido aquí" >
+        </div>
+        <div>
+          <label>Genero: </label> <br/>
+          <input type="radio" name="genero" value="" checked>Ambos
+          <br>
+          <input type="radio" name="genero" value="M">Masculino
+          <br>
+          <input type="radio" name="genero" value="F">Femenino
+      </div>
+        <div>
+          <label>Direccion: </label> <br/>
+          <input type="text" name="direccion" placeholder="Escriba la direccion aquí" >
+        </div>
+        <div>
+          <label>Pais: </label> <br/>
+          <input type="text" name="pais" placeholder="Escriba el pais aquí" >
+        </div>
+        <div>
+          <label>Departamento: </label> <br/>
+          <input type="text" name="departamento" placeholder="Escriba el departamento aquí" >
+        </div>
+        <button type="submit" class="btn">
+          Buscar
+        </button>
+      </form>
+    </div>
+    
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <td>Código</td>
+            <td>Nombre</td>
+            <td>Primer Apellido</td>
+            <td>Segundo Apellido</td>
+            <td>Genero</td>
+            <td>Direccion</td>
+            <td>Fecha de Naci.</td>
+            <td>Pais</td>
+            <td>Departamento</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in r %}
+          <tr>
+              <td>{{d['codigo']}}</td>
+              <td>{{d['nombre']}}</td>
+              <td>{{d['primer_apellido']}}</td>
+              <td>{{d['segundo_apellido']}}</td>
+              <td>{{d['genero']}}</td>
+              <td>{{d['direccion']}}</td>
+              <td>{{d['fecha_de_nacimiento']}}</td>
+              <td>{{d['pais']}}</td>
+              <td>{{d['departamento']}}</td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
